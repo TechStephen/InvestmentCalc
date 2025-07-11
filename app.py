@@ -32,7 +32,7 @@ class Tkinter:
             inputInitialAmount.get(), inputInterestRate.get(), inputYears.get()
         )).grid(column=1, row=4)
         
-        ttk.Label(frm, text='Results Per Year:' + '\n').grid(column=3, row=0)
+        ttk.Label(frm, text='Results Per Year at ' + Tkinter.getPercent(inputInterestRate.get()) + 'interest' '\n').grid(column=3, row=0)
         ttk.Label(frm, textvariable=self.output, justify=LEFT, anchor='w').grid(column=3, row=1, rowspan=10, sticky='nw')
 
         root.mainloop()
@@ -44,19 +44,13 @@ class Tkinter:
         
         # Loop through each year to calculate the interest
         for i in range(int(years)):
+            beforeAmount = initAmount
             initAmount += initAmount * interestRate
             initAmount = round(initAmount, 2)
-            amountPerYears.append('year ' + str(i + 1) + ' value with interest: $' + str(initAmount))
+            amountPerYears.append('year ' + str(i + 1) + ' value with interest: $' + str(initAmount) + ' | profit from last year: $' + str(round(initAmount - beforeAmount, 2)) + ' | total profit: $' + str(round(initAmount - initialAmount, 2)))
                 
         self.answer = amountPerYears
         self.output.set('\n'.join(amountPerYears))  
-    
-    # Get the percent value from a decimal
-    @staticmethod 
-    def getPercent(decimal):
-        percent = decimal * 100
-        striptPercent = str(percent).rstrip('0').rstrip('.')
-        return str(striptPercent) + '%'
 
 if __name__ == "__main__":
     tk = Tkinter()
