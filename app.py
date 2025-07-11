@@ -32,7 +32,7 @@ class Tkinter:
             inputInitialAmount.get(), inputInterestRate.get(), inputYears.get()
         )).grid(column=1, row=4)
         
-        ttk.Label(frm, text='Results Per Year at ' + Tkinter.getPercent(inputInterestRate.get()) + 'interest' '\n').grid(column=3, row=0)
+        ttk.Label(frm, text='Investment Results:' + '\n').grid(column=3, row=0)
         ttk.Label(frm, textvariable=self.output, justify=LEFT, anchor='w').grid(column=3, row=1, rowspan=10, sticky='nw')
 
         root.mainloop()
