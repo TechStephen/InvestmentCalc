@@ -37,9 +37,6 @@ class Tkinter:
 
         root.mainloop()
 
-    def returnAnswerText(answer):
-        print('ran')
-
     # Calculate the interest over a number of years
     def calcInterest(self, initialAmount, interestRate, years):
         amountPerYears = []
@@ -50,12 +47,9 @@ class Tkinter:
             initAmount += initAmount * interestRate
             initAmount = round(initAmount, 2)
             amountPerYears.append('year ' + str(i + 1) + ' value with interest: $' + str(initAmount))
-        
-        # print('*****Initial Investment: $' + str(initialAmount) + ' with an interest rate of ' + str(Tkinter.getPercent(interestRate)) + ' over ' + str(years) + ' years*****' + '\n')
-        
+                
         self.answer = amountPerYears
         self.output.set('\n'.join(amountPerYears))  
-        print(amountPerYears)
     
     # Get the percent value from a decimal
     @staticmethod 
@@ -65,5 +59,4 @@ class Tkinter:
         return str(striptPercent) + '%'
 
 if __name__ == "__main__":
-    # calcInterest(10000, 0.08, 10)
     tk = Tkinter()
